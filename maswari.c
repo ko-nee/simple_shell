@@ -1,15 +1,15 @@
 #include "shell.h"
 
 /**
- * main entry point - evokes the prompt on the terminal
- *
+ * main - entry point. this evokes the prompt on the terminal
+ * Return: returns 0
  */
 
 int main(void)
 {
-	char instruction[150]; //allocated space for the characters
+	char instruction[150]; /* allocated space for the characters */
 
-	while (1) //infinite loop, keeps prompt flashing
+	while (1) /* infinite loop, keeps prompt flashing */
 	{
 	flashing_prompt();
 	read_instruction(instruction, sizeof(instruction));
