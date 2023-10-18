@@ -13,7 +13,7 @@ char **env = environ;
 
 while (env[index])
 {
-write(STDOUT_FILENO, env[index], string_length(env[index));
+write(STDOUT_FILENO, (const void *)env[index], string_length(env[index]));
 write(STDOUT_FILENO, "\n", 1);
 index++;
 }

@@ -15,8 +15,8 @@
 */
 int builtin_checker(char **user_input_cmd, char *line)
 {
-if (shell_builtin(user_input_cmd, line))
-return 1;
+if (execute_builtin(user_input_cmd, line))
+return (1);
 else if (**user_input_cmd == '/')
 {
 execute_instruction(user_input_cmd[0], user_input_cmd);

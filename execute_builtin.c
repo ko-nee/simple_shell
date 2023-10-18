@@ -24,7 +24,7 @@ return (1);
 }
 else if (string_compare(*input_cmd, builtin.exit) == 0)
 {
-exit_command(command, line);
+exit_command(input_cmd, line);
 return (1);
 }
 return (0);
