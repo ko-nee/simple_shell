@@ -1,17 +1,15 @@
 #include "shell.h"
 
 /**
- * builtin_checker - Determine if the user input corresponds to a built-in
- * command or an external command.
+ * exit_command - Frees resources and exits the shell.
  *
- * This function checks whether the given user input corresponds to a built-in
- * command. If it's a built-in command, it executes it. If not, it treats the
- * user input as an external command and attempts to execute it.
+ * Function is responsible for freeing allocated memory and safely exiting
+ * the shell. It takes care of releasing the memory used for the input line
+ * and the tokenized input command. After cleanup, it gracefully exits the
+ * shell with a status code of 0.
  *
- * @user_input_cmd: Tokenized user input.
+ * @input_cmd: Tokenized user input.
  * @line: The input line obtained from the `getline` function.
- *
- * Return: 1 if the command is executed, 0 if it's not executed.
  */
 void exit_command(char **input_cmd, char *line)
 {

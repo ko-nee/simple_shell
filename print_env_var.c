@@ -9,11 +9,12 @@
 void print_env_var(void)
 {
 int index = 0;
-char **env = environ;
+char **env_ptr = environ;
 
-while (env[index])
+while (env_ptr[index])
 {
-write(STDOUT_FILENO, (const void *)env[index], string_length(env[index]));
+write(STDOUT_FILENO, (const void *)env_ptr[index],
+		string_length(env_ptr[index]));
 write(STDOUT_FILENO, "\n", 1);
 index++;
 }

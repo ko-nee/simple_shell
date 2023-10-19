@@ -15,7 +15,7 @@ int i = 0, output;
 while (*(str1 + i) == *(str2 + i) && *(str1 + i) != '\0')
 i++;
 
-output = (*(str1 + i) - *(str2 + i));
+output = (*(str1 + i)-*(str2 + i));
 
 return (output);
 }

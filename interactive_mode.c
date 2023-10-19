@@ -15,5 +15,5 @@ void interactive_mode(int sig_num)
 {
 (void)sig_num;
 write(STDERR_FILENO, "\n", 1);
-write(STDERR_FILENO, "$ ", 2);
+write(STDERR_FILENO, "MASWARI-SHELL$ ", 15);
 }

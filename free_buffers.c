@@ -10,7 +10,7 @@ void free_buffers(char **buffers)
 {
 int index = 0;
 
-if (buffers == NULL)
+if (!buffers || buffers == NULL)
 return;
 
 while (buffers[index])
