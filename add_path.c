@@ -14,30 +14,37 @@
 */
 char *add_path(char *path, char *input_cmd)
 {
-size_t path_len;
-size_t cmd_len;
 char *buf;
+size_t path_len = 0;
+size_t cmd_len = 0;
 
-if (path == NULL || input_cmd == NULL)
+if (input_cmd == 0)
+input_cmd = "";
+
+if (path == 0)
+path = "";
+
+buf = malloc(sizeof(char) * (string_length(path)
+			+ string_length(input_cmd) + 2));
+if (!buf)
 return (NULL);
 
-path_len = string_length(path);
-cmd_len = string_length(input_cmd);
-
-buf = malloc(path_len + cmd_len + 2);
-
-if (buf == NULL)
-return (NULL);
-
-if (path_len > 0)
+while (path[path_len])
 {
-string_compare_n(buf, path, path_len);
-if (path[path_len - 1] != '/')
-buf[path_len] = '/';
+buf[path_len] = path[path_len];
+path_len++;
 }
 
-string_compare_n(buf + path_len + (path_len > 0 ? 1 : 0), input_cmd, cmd_len);
-buf[path_len + cmd_len + (path_len > 0 ? 1 : 0)] = '\0';
-
+if (path[path_len - 1] != '/')
+{
+buf[path_len] = '/';
+path_len++;
+}
+while (input_cmd[cmd_len])
+{
+buf[path_len + cmd_len] = input_cmd[cmd_len];
+cmd_len++;
+}
+buf[path_len + cmd_len] = '\0';
 return (buf);
 }

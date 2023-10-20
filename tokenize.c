@@ -8,58 +8,42 @@
 */
 char **tokenize_input(char *input)
 {
-char *input_copy = NULL, *token = NULL, *delimiter = " \t\r\n";
+char *buf_input = NULL, *buf_ptr = NULL, *token = NULL;
+char *delimiter = " :\t\r\n";
 char **tokens = NULL;
-int token_count = 0;
+int tokencount = 1;
 size_t index = 0, flag = 0;
-char *input_ptr;
 
-/* Duplicate the input string */
-input_copy = string_duplicate(input);
-if (!input_copy)
-return NULL;
+buf_input = string_duplicate(input);
+if (!buf_input)
+return (NULL);
+buf_ptr = buf_input;
 
-/* Count the number of tokens */
-input_ptr = input_copy;
-while (*input_ptr)
+while (*buf_ptr)
 {
-if (string_search(delimiter, *input_ptr) != NULL && flag == 0)
+if (string_search(delimiter, *buf_ptr) != NULL && flag == 0)
 {
-token_count++;
+tokencount++;
 flag = 1;
 }
-else if (string_search(delimiter, *input_ptr) == NULL && flag == 1)
-{
+else if (string_search(delimiter, *buf_ptr) == NULL && flag == 1)
 flag = 0;
+buf_ptr++;
 }
-input_ptr++;
-}
-
-/* Allocate memory for the tokens array */
-tokens = malloc(sizeof(char *) * (token_count + 1));
-if (!tokens)
-{
-free(input_copy);
-return (NULL);
-}
-
-/* Tokenize the input and store the tokens */
-token = strtok(input_copy, delimiter);
+tokens = malloc(sizeof(char *) * (tokencount + 1));
+token = strtok(buf_input, delimiter);
 while (token)
 {
 tokens[index] = string_duplicate(token);
-if (!tokens[index])
+if (tokens[index] == NULL)
 {
 free(tokens);
-free(input_copy);
 return (NULL);
 }
 token = strtok(NULL, delimiter);
 index++;
 }
-tokens[index] = NULL;
-
-/* Clean up and return the tokens array */
-free(input_copy);
+tokens[index] = '\0';
+free(buf_input);
 return (tokens);
 }

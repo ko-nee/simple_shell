@@ -1,7 +1,7 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -38,23 +38,41 @@ char *string_search(char *str, char c);
 int shell_builtin(char **user_input_cmd, char *line);
 char *search_path(void);
 
+/* Structures for built-in commands and flags */
+
+/**
+ * struct builtin - Structure to define built-in commands and related data.
+ * @env_var: Built-in environment variable command.
+ * @exit: Built-in exit command.
+ */
 struct builtin
 {
 	char *env_var;
 	char *exit;
 } builtin;
 
+/**
+ * struct set_flags - Structure to manage shell configuration flags.
+ * @interactive: Flag to indicate interactive shell mode.
+ */
 struct set_flags
 {
 	bool interactive;
 } set_flags;
 
+/**
+ * struct info_t - Structure to hold additional shell information.
+ * @final_exit: Exit status for the shell.
+ * @ln_count: Line count for shell input.
+ */
 struct info_t
 {
 	int final_exit;
 	int ln_count;
 } info_t;
 
+/* Extern declarations */
 extern char **environ;
 extern __sighandler_t signal(int __sig, __sighandler_t __handler);
+
 #endif

@@ -2,12 +2,12 @@
 
 /**
  *read_string - function that takes user input
- *@string - input from the user entered on the interface
- *@size - length of string in character count
+ *@string: input from the user entered on the interface
+ *@size: length of string in character count
  *
  */
 
-void read_string(char *string, side_t size);
+void read_string(char *string, size_t size)
 {
 	if (fgets(string, size, stdin) == NULL)
 	{
@@ -27,7 +27,7 @@ void read_string(char *string, side_t size);
 
 /**
  *print_out - creates a function that can print to the standard output
- *@string - output printed out onto the interface
+ *@string: output printed out onto the interface
  *
  */
 
