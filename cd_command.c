@@ -13,7 +13,7 @@
 
 int cd_command(char **args)
 {
-	char *new_dir;
+	char *new_dir = NULL;
 
 	if (args[1] == NULL || strcmp(args[1], "~") == 0)
 	{
@@ -23,6 +23,8 @@ int cd_command(char **args)
 	{
 	new_dir = getenv("OLDPWD");
 
+	if (new_dir)
+	{
 	write(STDOUT_FILENO, new_dir, strlen(new_dir));
 	write(STDOUT_FILENO, "\n", 1);
 	}
@@ -30,9 +32,11 @@ int cd_command(char **args)
 	{
 	new_dir = args[1];
 	}
-
+	if (new_dir != NULL)
+	{
 	char current_dir[1024];
-	if (getcwd(current_dir, sizeof(current_dir)) == NULL) {
+	if (getcwd(current_dir, sizeof(current_dir)) == NULL)
+	{
 	perror("getcwd");
 	return (1);
 	}
@@ -50,6 +54,11 @@ int cd_command(char **args)
 	if (update_pwd_env(current_dir) != 0)
 	{
         perror("update OLDPWD");
+	return (1);
+	}
+	else 
+	{
+	write(STDERR_FILENO, "cd: HOME not set\n", 17);
 	return (1);
 	}
 	return (0);
