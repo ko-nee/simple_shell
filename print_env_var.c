@@ -31,7 +31,7 @@ void _puts(const char *str)
  * print_environment - Prints the current environment variables.
  */
 
-void print_environment()
+void print_env_var(void)
 {
 	extern char **environ;
 	char **env_copy = environ;
