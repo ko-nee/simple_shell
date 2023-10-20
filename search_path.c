@@ -16,16 +16,13 @@ char **env_ptr = environ;
 char *path = NULL;
 int a;
 
+int a = 0;
+
 while (*env_ptr)
 {
-if (string_compare_n(*env_ptr, "PATH=", 5) == 0)
+if (strncmp(*env_ptr, "PATH=", 5) == 0)
 {
-path = *env_ptr;
-while (*path && a < 5)
-{
-path++;
-a++;
-}
+path = *env_ptr + 5;
 return (path);
 }
 env_ptr++;
