@@ -22,7 +22,7 @@ while (*env_ptr)
 {
 if (strncmp(*env_ptr, "PATH=", 5) == 0)
 {
-path = *env_ptr + 5;
+path =strdup(*env_ptr + 5);
 return (path);
 }
 env_ptr++;
