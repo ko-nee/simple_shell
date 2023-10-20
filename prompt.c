@@ -8,8 +8,5 @@
 
 void flashing_prompt(void)
 {
-if ((isatty(STDIN_FILENO) == 1) && (isatty(STDOUT_FILENO) == 1))
-set_flags.interactive = 1;
-if (set_flags.interactive)
-write(STDERR_FILENO, "$ ", 2);
+	print_out("maswari_shell$ ");
 }

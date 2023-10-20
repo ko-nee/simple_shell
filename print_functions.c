@@ -25,8 +25,6 @@ void read_string(char *string, side_t size);
 	string[strcspn(string, "\n")] = '\0';
 }
 
-#include "shell.h"
-
 /**
  *print_out - creates a function that can print to the standard output
  *@string - output printed out onto the interface

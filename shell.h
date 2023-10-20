@@ -27,6 +27,7 @@ int execute_builtin(char **input_cmd, char *line);
 char *find_exec_path(char **directories, char *input_cmd);
 void free_buffers(char **buffers);
 char **tokenize_input(char *input);
+int _putchar(char ch);
 
 /* String manipulation function */
 int string_compare(char *str1, char *str2);
