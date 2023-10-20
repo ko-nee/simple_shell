@@ -34,8 +34,9 @@ void _puts(const char *str)
 void print_environment()
 {
 	extern char **environ;
+	char **env_copy = environ;
 
-	for (char **env = environ; *env != NULL; env++)
+	 for (char **env = env_copy; *env != NULL; env++)
 	{
 	_puts(*env);
 	_puts("\n");
