@@ -1,0 +1,12 @@
+#include "shell.h"
+
+/**
+ *print_out - creates a function that can print to the standard output
+ *@string: output printed out onto the interface
+ *
+ */
+
+void print_out(const char *string)
+{
+	write(STDOUT_FILENO, string, strlen(string));
+}
